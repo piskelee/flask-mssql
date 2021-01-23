@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1 style="text-align: center;">{{ htmTitle }}</h1>
+<div class="content">
+    <div class="box">
+        <div class="form">
+            <form action="/" method="POST">
+                <table>
+                    <tr>
+                        <td>USER_NAME</td>
+                        <td><input type="text" name="USER_NAME" id="USER_NAME"></td>
+                        <td>USER_PHONE</td>
+                        <td><input type="text" name="USER_PHONE" id="USER_PHONE"></td>
+                    </tr>
+                    <tr>
+                        <td>USER_MAIL</td>
+                        <td><input type="text" name="USER_MAIL" id="USER_MAIL"></td>
+                        <td>USER_ADDRESS</td>
+                        <td><input type="text" name="USER_ADD" id="USER_ADD"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"> <input style="text-align: center;" type="submit" value="Add USER"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <br>
+        <div class="form">
+            <table border="1">
+                <tr>
+                    <td colspan="7">USER LIST</td>
+                </tr>
+                <tr>
+                    <th>USER_NAME</th>
+                    <th>USER_PHONE</th>
+                    <th>USER_MAIL</th>
+                    <th>USER_ADD</th>
+                    <th>USER_DATETIME</th>
+                    <th>Action</th>
+                </tr>
+                {% for data in datas %}
+                <tr>
+                    <td>{{ data.USER_NAME }}</td>
+                    <td>{{ data.USER_PHONE }}</td>
+                    <td>{{ data.USER_MAIL }}</td>
+                    <td>{{ data.USER_ADD }}</td>
+                    <td>{{ data.USER_DATETIME }}</td>
+                    <td>
+                        <a href="/update/{{data.ID}}">UPDATE</a>
+                        <a href="/delete/{{data.ID}}">DELETE</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
